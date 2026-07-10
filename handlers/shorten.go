@@ -59,8 +59,11 @@ func (h *Handler) ShortenHandler(w http.ResponseWriter, r *http.Request) {
 		ShortenedURL: shortenedURL,
 	}
 
+	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
 	err = json.NewEncoder(w).Encode(payload)
+
+	// do we need this? writeheader locks in the status code so this wont even work
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
