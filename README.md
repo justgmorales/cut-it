@@ -24,7 +24,7 @@ go run .
 
 ## Running with Docker
 ```bash
-docker build -t cut-it
+docker build . -t cut-it
 docker run -p 8080:8080 cut-it
 ```
 
