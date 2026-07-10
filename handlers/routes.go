@@ -13,6 +13,7 @@ type Handler struct {
 }
 
 func RegisterRoutes(mux *http.ServeMux, h *Handler) {
+	mux.HandleFunc("GET /health", h.HealthHandler)
 	mux.HandleFunc("POST /shorten", h.ShortenHandler)
 	mux.HandleFunc("GET /{slug}", h.RedirectHandler)
 }
